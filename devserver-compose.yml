@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  flask:
+    build: ./flask-devserver
+    container_name: flask
+    environment:
+     - APP_NAME=MyFlaskApp
+    ports:
+     - "8080:8080"
+
+  k6:
+    build: ./k6-loadtester
+    #container-name: k6
+    depends_on:
+      flask:
+        condition: service_started
