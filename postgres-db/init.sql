@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS accounts (
+  user_id VARCHAR (50) PRIMARY KEY, 
+  username VARCHAR (50) UNIQUE NOT NULL
+);
