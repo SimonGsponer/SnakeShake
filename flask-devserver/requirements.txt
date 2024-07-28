@@ -1,1 +1,4 @@
 Flask==3.0.3
+SQLAlchemy==2.0.31
+psycopg==3.2.1
+psycopg[pool]==3.2.1
