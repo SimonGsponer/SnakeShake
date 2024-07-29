@@ -1,0 +1,10 @@
+FROM python:3.12-bookworm
+
+COPY /app.py /app.py
+COPY /requirements.txt /requirements.txt
+COPY /requirements-wsgi.txt /requirements-wsgi.txt
+
+RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements-wsgi.txt
+
+CMD ["gunicorn","-w", "4",  "-b", "0.0.0.0:8081", "app:app"]

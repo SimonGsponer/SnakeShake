@@ -23,8 +23,8 @@ url_object = URL.create(
     "postgresql+psycopg",
     username=os.environ['POSTGRES_USER'],
     password=os.environ['POSTGRES_PASSWORD'],
-    host="postgresql",
-    port=8090,
+    host=os.environ['POSTGRES_CONTAINERNAME'],
+    port=os.environ['POSTGRES_PORT'],
     database=os.environ['POSTGRES_DB'],
 )
 
