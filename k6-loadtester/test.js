@@ -3,7 +3,6 @@ import http from 'k6/http';
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 
-
 let vu_1 = 50;
 let vu_2 = 100;
 let vu_3 = 200;

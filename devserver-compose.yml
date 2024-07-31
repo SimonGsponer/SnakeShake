@@ -33,7 +33,7 @@ services:
     ports:
      - "8081:8081"
     depends_on:
-      db_devserver:
+      db_wsgi:
         condition: service_healthy
 
   k6:
@@ -48,7 +48,7 @@ services:
       - K6_INFLUXDB_INSECURE=true
         # NOTE: This is an Admin token, it's not suggested to use this configuration in production.
         # Instead, use a Token with restricted privileges.
-      - K6_INFLUXDB_TOKEN=EEKpryGZk8pVDXmIuy484BKUxM5jOEDv7YNoeNZUbsNbpbPbP6kK_qY9Zsyw7zNnlZ7pHG16FYzNaqwLMBUz8g==
+      - K6_INFLUXDB_TOKEN=${INFLUX_DB_ADMIN_TOKEN}
 
   db_devserver:
     image: postgres:16.3-alpine
@@ -98,7 +98,7 @@ services:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - INFLUXDB_DB=k6
       - DOCKER_INFLUXDB_INIT_ORG=application_loadtesting
-      - DOCKER_INFLUXDB_INIT_USERNAME=croco
-      - DOCKER_INFLUXDB_INIT_PASSWORD=password1
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_DB_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUX_DB_PW}
       - DOCKER_INFLUXDB_INIT_BUCKET=loadtest
-      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=EEKpryGZk8pVDXmIuy484BKUxM5jOEDv7YNoeNZUbsNbpbPbP6kK_qY9Zsyw7zNnlZ7pHG16FYzNaqwLMBUz8g==
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUX_DB_ADMIN_TOKEN}
