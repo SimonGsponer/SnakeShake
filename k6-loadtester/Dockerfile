@@ -1,9 +1,3 @@
-# FROM grafana/k6:0.52.0
-
-# COPY test.js /test.js
-
-# CMD ["run", "/test.js"]
-
 FROM golang:1.20-alpine3.17 as builder
 WORKDIR $GOPATH/src/go.k6.io/k6
 ADD . .

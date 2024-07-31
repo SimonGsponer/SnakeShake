@@ -6,7 +6,6 @@ import string
 from uuid import uuid4
 
 from flask import Flask, jsonify
-from psycopg_pool import ConnectionPool
 from sqlalchemy import create_engine, inspect
 from sqlalchemy import URL, Column, String
 from sqlalchemy.orm import DeclarativeBase
@@ -44,21 +43,6 @@ class User(Base):
     user_id = Column(String, primary_key=True)
     username = Column(String, nullable=False, unique=True)
 
-# conn_string = "postgresql://%s:%s@%s:%s/%s" % (
-#     os.environ['POSTGRES_USER'],
-#     os.environ['POSTGRES_PASSWORD'],
-#     "postgresql",
-#     '8090',
-#     os.environ['POSTGRES_DB']
-# )
-
-# pool_pre_ping
-# pool_size=5
-# pool_recycle=3600
-
-# conn_string = "host=postgresql port=8090 user=postgres dbname=snakeshake_db password=postgress"
-#conn_string = "postgresql://postgres_usr:postgres@postgresql:8090/snakeshake_db"
-#pool = ConnectionPool(conn_string, open=True)
 
 @app.route("/")
 def hello_world():
